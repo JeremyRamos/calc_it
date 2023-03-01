@@ -1,6 +1,6 @@
 <h1>Calculate Inverter Size and Battery Capacity</h1>
 
-<%= form_with(model: @calculation, url: calculate_calculations_path, local: true, data: { turbo: "true" }) do |form| %>
+<%= form_with(scope: :calculation, url: calculate_calculations_path, local: true, data: { turbo: "true" }) do |form| %>
   <%= form.label :total_wattage, "Total Wattage (W)" %>
   <%= form.number_field :total_wattage, class: "form-control", placeholder: "Enter wattage", required: true %>
 

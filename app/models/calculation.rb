@@ -1,2 +1,0 @@
-class Calculation < ApplicationRecord
-end
