@@ -1,0 +1,10 @@
+<h1>Calculate Inverter Size and Battery Capacity</h1>
+
+<%= form_with(model: @calculation, url: calculate_calculations_path, local: true, data: { turbo: "true" }) do |form| %>
+  <%= form.label :total_wattage, "Total Wattage (W)" %>
+  <%= form.number_field :total_wattage, class: "form-control", placeholder: "Enter wattage", required: true %>
+
+  <%= form.submit "Calculate", class: "btn btn-primary" %>
+<% end %>
+
+<%= render partial: "results", locals: { inverter_size: nil, battery_size: nil, hours: nil } %>

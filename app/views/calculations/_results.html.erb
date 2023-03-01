@@ -1,0 +1,9 @@
+<div id="results">
+  <% if inverter_size && battery_size && hours%>
+    <h3>The required inverter size is <b><%= inverter_size %> watts</b>. Using a 105 Ah battery, it will run for <b><%= hours %> hours</b>.</h3>
+    <ul style='padding-left: 15px;'> 
+      <li> Discharging a battery beyond 50% is not advised. These calculations are made on 50% of the battery capacity. </li>
+      <li> Assuming an inverter with a 80% efficiency rate</li>
+    </ul>
+  <% end %>
+</div>
