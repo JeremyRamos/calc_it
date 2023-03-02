@@ -4,7 +4,7 @@
     <h1>Calculate Inverter Size and Battery Capacity</h1>
     <div class="form-group" >
       <%= form.label :total_wattage, "Total Wattage (W)", class: 'form-label' %>
-      <%= form.number_field :total_wattage, class: "form-control", placeholder: "Enter wattage", data: { action: 'keyup->calculations#calculate'}%>
+      <%= form.number_field :total_wattage, step: :any, class: "form-control", placeholder: "Enter wattage", data: { action: 'keyup->calculations#calculate'}%>
     </div>
     <%= form.submit "Calculate", class: "btn btn-primary btn-customized mt-3 d-none", data: { calculations_target: 'submit'} %>
     <%= render partial: "results", locals: { inverter_size: nil, battery_size: nil, hours: nil } %>
