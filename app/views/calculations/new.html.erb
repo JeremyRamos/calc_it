@@ -1,12 +1,12 @@
 <div class='row'>
 
-  <%= form_with(scope: :calculation, url: calculate_calculations_path, local: true, data: { turbo: "true" }, class:"mx-auto col-10 col-md-8 col-lg-6") do |form| %>
+  <%= form_with(scope: :calculation, url: calculate_calculations_path, local: true, data: { controller: 'calculations', turbo: "true" }, class:"mx-auto col-10 col-md-8 col-lg-6") do |form| %>
     <h1>Calculate Inverter Size and Battery Capacity</h1>
     <div class="form-group" >
       <%= form.label :total_wattage, "Total Wattage (W)", class: 'form-label' %>
-      <%= form.number_field :total_wattage, class: "form-control", placeholder: "Enter wattage", required: true %>
+      <%= form.number_field :total_wattage, class: "form-control", placeholder: "Enter wattage", data: { action: 'keyup->calculations#calculate'}%>
     </div>
-    <%= form.submit "Calculate", class: "btn btn-primary btn-customized mt-3" %>
+    <%= form.submit "Calculate", class: "btn btn-primary btn-customized mt-3 d-none", data: { calculations_target: 'submit'} %>
     <%= render partial: "results", locals: { inverter_size: nil, battery_size: nil, hours: nil } %>
   <% end %>
 
