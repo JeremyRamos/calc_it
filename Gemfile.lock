@@ -87,6 +87,8 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.2.3)
+      rails
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -128,6 +130,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.6)
     public_suffix (5.0.1)
@@ -210,11 +214,13 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
   debug
+  dockerfile-rails (>= 1.2)
   importmap-rails
   jbuilder
   pg (~> 1.1)
