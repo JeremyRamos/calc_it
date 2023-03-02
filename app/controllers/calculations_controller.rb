@@ -7,7 +7,7 @@ class CalculationsController < ApplicationController
       battery_size, hours = calculate_battery_size(calculation_params[:total_wattage].to_i, 0.8, 12)
       render turbo_stream: turbo_stream.replace('results', partial: 'results', locals: { inverter_size: inverter_size, battery_size: battery_size, hours: hours })
     else
-      render turbo_stream: turbo_stream.remove('results')
+      render turbo_stream: turbo_stream.replace('results', partial: 'results', locals: { inverter_size: nil, battery_size: nil })
     end
   end
 
