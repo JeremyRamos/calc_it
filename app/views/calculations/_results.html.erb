@@ -1,6 +1,6 @@
 <div id="results" style='padding-top: 30px'>
-  <% if inverter_size && battery_size && hours%>
-    <p class="description">The required inverter size is <b><%= inverter_size %> watts</b>. Using a 105 Ah battery, it will run for <b><%= hours %> hours</b>.</p>
+  <% if inverter_size && hours %>
+    <p class="description">The required inverter size is <b><%= inverter_size %> watts</b>. Using a 105 Ah battery, it will run for approximately <b><%= hours %> hours and <%= minutes %> minutes</b>.</p>
     <ul style='padding-left: 15px;'> 
       <li> Discharging a battery beyond 50% is not advised. These calculations are made on 50% of the battery capacity. </li>
       <li> For this calculation, I'm assuming the inverter has a 80% efficiency rate. The higher the efficiency of the inverter, the better</li>
