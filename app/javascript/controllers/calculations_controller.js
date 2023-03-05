@@ -1,9 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
+import debounce from "debounce";
 
 export default class extends Controller {
-  static targets = ['submit']
 
+  initialize() {
+    this.calculate = debounce(this.calculate.bind(this), 300);
+  }
   calculate() {
-    this.submitTarget.click()
+    this.element.requestSubmit();
   }
 }
