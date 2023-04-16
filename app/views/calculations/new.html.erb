@@ -5,6 +5,8 @@
     <div class="form-group" >
       <%= form.label :total_wattage, "Total Wattage (W)", class: 'form-label' %>
       <%= form.number_field :total_wattage, step: :any, class: "form-control", placeholder: "Enter wattage", data: { action: 'keyup->calculations#calculate'}%>
+      <%= form.label :battery_size, "Select the size of your inverter's battery", class: 'form-label' %>
+      <%= form.select :battery_size, options_for_select([['50 AH', 50], ['75 AH', 75], ['100 AH', 100], ['105 AH', 105], ['150 AH', 150], ['200 AH', 200], ['210 AH', 200]], 105), {}, { class: 'form-select', data: { action: 'change->calculations#calculate'} }%>
     </div>
     <%= render partial: "results", locals: { inverter_size: nil, battery_size: nil, hours: nil } %>
   <% end %>
