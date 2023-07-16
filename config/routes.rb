@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     post :calculate, on: :collection
   end
   
-  # root to: 'calculations#new'
+  get '/units_calculation', to: 'units/calculations#new'
+  post '/units_calculation', to: 'units/calculations#calculate'
 end

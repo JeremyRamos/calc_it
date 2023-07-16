@@ -1,0 +1,5 @@
+<div id="results" style='padding-top: 30px'>
+  <% if units && total_cost_in_rand %>
+    <p class="description">It will cost you approximately R<%=total_cost_in_rand.round(2) %> to get <%=units%> units.</p>
+  <% end %>
+</div>

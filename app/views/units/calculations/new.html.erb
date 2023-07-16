@@ -1,0 +1,16 @@
+<div class='row'>
+
+  <%= form_with(scope: :calculation, url: units_calculation_path, local: true, data: { controller: 'calculations', turbo: "true" }, class:"mx-auto col-10 col-md-8 col-lg-6") do |form| %>
+    <h1>Electricity Units Calculation</h1>
+    <div class="form-group" >
+      <%= form.label :property_tariff, "What is your property valuation according to the City of Cape Town?", class: 'form-label' %>
+      <%= form.select :property_tariff, options_for_select([['Less than R500k', 'lifeline'], ['Greater than R500k but less than R1 million', 'domestic'], ['Greater than R1 million', 'home_user']], 'home_user'), {}, { class: 'form-select', data: { action: 'change->calculations#calculate'} }%>
+      <%= form.label :already_purchased_units, "How many units have you purchased for this calender month?", class: 'form-label' %>
+      <%= form.number_field :already_purchased_units, step: :any, class: "form-control", data: { action: 'keyup->calculations#calculate'}%>
+      <%= form.label :units_wanted, "How many units do you want to buy?", class: 'form-label' %>
+      <%= form.number_field :units_wanted, step: :any, class: "form-control", data: { action: 'keyup->calculations#calculate'}%>
+    </div>
+    <%= render partial: "results", locals: { units: nil, total_cost_in_rand: nil } %>
+  <% end %>
+
+</div>
