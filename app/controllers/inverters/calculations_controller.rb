@@ -1,4 +1,4 @@
-class CalculationsController < ApplicationController
+class Inverters::CalculationsController < ApplicationController
   def new; end
 
   def calculate
