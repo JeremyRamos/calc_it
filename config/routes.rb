@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   post '/calculate', to: 'inverters/calculations#calculate'
   
   get '/units_calculation', to: 'units/calculations#new'
-  post '/calculate', to: 'units/calculations#calculate'
+  post '/units_calculation', to: 'units/calculations#calculate'
 end
