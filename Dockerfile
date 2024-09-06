@@ -27,7 +27,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential libpq-dev
 
 # Install application gems
-COPY Gemfile Gemfile.lock .
+COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
