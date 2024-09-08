@@ -33,33 +33,24 @@ class UnitsCalculator
   def calculate_units_for_amount(tariff, previous_units, amount)
     tariff = TARRIFF_UNIT_COST_MAPPING[tariff]
   
-    total_units = 0
-  
     # Calculate how many units are left in block_1 (up to 600 total units)
     remaining_units_in_block_1 = [UNIT_THRESHOLD - previous_units, 0].max
   
     # Calculate the total cost for remaining block_1 units
     block_1_cost = remaining_units_in_block_1 * tariff[:block_1]
 
-    # Calculate using Block 1 tariff until 600 units then calculate excess in Block 2 tariff
-    if remaining_units_in_block_1 > 0
-      # If the amount exceeds Block 1 cost, buy all Block 1 units first
-      if amount > block_1_cost
-        total_units = remaining_units_in_block_1  # All Block 1 units are bought
-        # total_units = block_1_cost / tariff[:block_1]
+    return amount / tariff[:block_2] if remaining_units_in_block_1.zero?
 
-        # Now, calculate how many units can be bought in Block 2 with the remaining amount
-        block_2_cost = amount - block_1_cost
-        total_units += block_2_cost / tariff[:block_2]
-      else
-        # If the amount is less than Block 1 cost, calculate using block 1 tariff
-        total_units = amount / tariff[:block_1]
-      end
+    # Calculate using Block 1 tariff until 600 units then calculate excess in Block 2 tariff
+    if amount > block_1_cost
+      total_units = block_1_cost / tariff[:block_1]
+
+      # calculate excess units (more than 600) using block 2 tariff cost
+      block_2_cost = amount - block_1_cost
+      total_units += block_2_cost / tariff[:block_2]
     else
-      # If no Block 1 units left, calculate everything using block 2 tariff
-      total_units = amount / tariff[:block_2]
+      # If the amount of units to buy is less than Block 1 cost, calculate using block 1 tariff
+      total_units = amount / tariff[:block_1]
     end
-  
-    total_units
   end
 end
