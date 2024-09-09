@@ -6,7 +6,7 @@
       <%= form.label :property_tariff, "What is your property valuation according to the City of Cape Town?", class: 'form-label' %>
       <%= form.select :property_tariff, options_for_select([['Less than R500k', 'lifeline'], ['Greater than R500k but less than R1 million', 'domestic'], ['Greater than R1 million', 'home_user']], 'home_user'), {}, { class: 'form-select', data: { action: 'change->calculations#calculate'} }%>
       <%= form.label :already_purchased_units, "How many units have you purchased for this calender month?", class: 'form-label' %>
-      <%= form.number_field :already_purchased_units, step: :any, class: "form-control", data: { action: 'keyup->calculations#calculate'}%>
+      <%= form.number_field :already_purchased_units, value: 0, step: :any, class: "form-control", data: { action: 'keyup->calculations#calculate'}%>
       <%= form.label :units_wanted, "How many units do you want to buy (Rand amount)?", class: 'form-label' %>
       <%= form.number_field :units_wanted, step: :any, class: "form-control", data: { action: 'keyup->calculations#calculate'}%>
     </div>
