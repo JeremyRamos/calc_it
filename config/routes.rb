@@ -2,14 +2,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'inverters/calculations#new'
 
-  # resources :calculations, only: [:new, :create] do
-  #   post :calculate, on: :collection
-  # end
+  root 'units/calculations#new'
   
-  post '/calculate', to: 'inverters/calculations#calculate'
+  get '/electricity', to: 'units/calculations#new'
+  get '/inverter', to: 'inverters/calculations#new'
   
-  get '/units_calculation', to: 'units/calculations#new'
-  post '/units_calculation', to: 'units/calculations#calculate'
+  post '/calc_electricity', to: 'units/calculations#calculate'
+  post '/calc_inverter', to: 'inverters/calculations#calculate'
 end
